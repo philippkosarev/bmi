@@ -13,10 +13,11 @@ center = Gtk.Align.CENTER
 class SpinRow(BaseRow):
   __gtype_name__ = 'SpinRow'
 
-  value = GObject.Property(type=int, default=0)
+  value = GObject.Property(type=float, default=0)
   upper = GObject.Property(type=int, default=max_size)
   lower = GObject.Property(type=int, default=-max_size)
   digits = GObject.Property(type=int, default=1)
+  step_increment = GObject.Property(type=float, default=1)
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
@@ -25,7 +26,6 @@ class SpinRow(BaseRow):
     self.set_activatable(True)
     self.set_css_classes(['spin'])
     climb_rate = 1
-    self.step_increment = 1
     self.page_increment = 10
     self.adjustment = Gtk.Adjustment.new(
       self.value,
@@ -44,6 +44,7 @@ class SpinRow(BaseRow):
     self.connect('notify::lower', self.configure)
     self.connect('notify::upper', self.configure)
     self.connect('notify::digits', self.update_digits)
+    self.connect('notify::step-increment', self.configure)
     self.spin_button.connect('value-changed', self.on_value_changed)
 
   def configure(self, row, param):

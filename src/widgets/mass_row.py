@@ -39,6 +39,6 @@ class MassRow(SpinRow):
     else:
       value = lb_to_kg(value)
       self.set_subtitle(_('Kilograms'))
-    value = round(value, 0)
+    value = round(value, 1)
     self.imperial = imperial
     self.set_value(value)
