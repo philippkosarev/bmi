@@ -1,0 +1,358 @@
+# German translation for BMI
+# Copyright (C) 2025 Philipp Kosarev
+# This file is distributed under the same license as the BMI package.
+# Vincent Graves <vincent.plusplus@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BMI v4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-10 23:34+0100\n"
+"PO-Revision-Date: 2026-10-28 20:09+0100\n"
+"Last-Translator: Vincent Graves <vincent.plusplus@gmail.com>\n"
+"Language-Team: german\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 50.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.philippkosarev.bmi.desktop.in:2
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:7
+#: src/window/window.blp:109
+msgid "BMI"
+msgstr "BMI"
+
+#: data/io.github.philippkosarev.bmi.desktop.in:3
+msgid "Calculate body mass index"
+msgstr "Körpermasseindex berechnen"
+
+#: data/io.github.philippkosarev.bmi.desktop.in:9
+msgid "GTK;body;mass;index;calculator"
+msgstr "GTK;body;mass;index;Rechner;Körper;Masse;Gewicht"
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:8
+msgid "Body mass index calculator"
+msgstr "Rechner für den Body-Mass-Index"
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:10
+msgid ""
+"BMI is an open-source, body mass index calculator built with GTK4 and "
+"LibAdwaita."
+msgstr ""
+"BMI ist ein mit GTK4 und LibAdwaita entwickelter Open-Source-Rechner für den "
+"Body-Mass-Index."
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:14
+msgid "Philipp Kosarev"
+msgstr "Philipp Kosarev"
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:52
+msgid "BMI Basic Mode Dark Theme"
+msgstr "BMI Einfacher Modus Dunkler Stil"
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:56
+msgid "BMI Basic Mode Light Theme"
+msgstr "BMI Einfacher Modus Heller Stil"
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:60
+msgid "BMI Advanced Mode Dark Theme"
+msgstr "BMI Erweiterter Modus Dunkler Stil"
+
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:64
+msgid "BMI Advanced Mode Light Theme"
+msgstr "BMI Erweiterter Modus Heller Stil"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:7
+msgid "Window size"
+msgstr "Fenstergröße"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:12
+msgid "Toggles Advanced Mode"
+msgstr "Schaltet den erweiterten Modus um"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:17
+#: src/preferences/preferences.blp:25
+msgid "Remember inputs"
+msgstr "Eingaben speichern"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:22
+msgid "Whether the app uses metric or imperial units"
+msgstr "Ob die App metrische oder imperiale Einheiten verwendet"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:27
+msgid "Height in centimetres or inches"
+msgstr "Größe in Zentimetern oder Zoll"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:32
+msgid "Weight in kilograms or pounds"
+msgstr "Gewicht in Kilogramm oder Pfund"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:37
+msgid "Years since birth"
+msgstr "Alter in Jahren"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:42 src/window/window.blp:70
+msgid "Biological gender"
+msgstr "Biologisches Geschlecht"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:47
+msgid "Waist circumference in centimeters"
+msgstr "Taillenumfang in Zentimetern"
+
+#: data/io.github.philippkosarev.bmi.gschema.xml:52
+msgid "Hip circumference in centimeters"
+msgstr "Hüftumfang in Zentimetern"
+
+#: src/main.py:86
+msgid "Translators"
+msgstr "Übersetzer"
+
+#: src/window/window.py:118
+msgid ""
+"With the same height, this is what weight you need to get different BMI "
+"thresholds"
+msgstr ""
+"Die Gewichtsbereiche der verschiedenen BMI-Stufen, basierend auf deiner "
+"Körpergröße"
+
+#: src/window/window.py:121
+msgid "Underweight [Severe]"
+msgstr "Untergewicht [hochgradig]"
+
+#: src/window/window.py:122
+msgid "Underweight [Moderate]"
+msgstr "Untergewicht [mäßig]"
+
+#: src/window/window.py:123
+msgid "Underweight [Mild]"
+msgstr "Untergewicht [leicht]"
+
+#: src/window/window.py:124 src/window/window.py:134 src/window/window.py:141
+msgid "Healthy"
+msgstr "Normalgewicht"
+
+#: src/window/window.py:125 src/window/window.py:142
+msgid "Overweight"
+msgstr "Übergewicht"
+
+#: src/window/window.py:126
+msgid "Obese [Class 1]"
+msgstr "Adipositas [Grad I]"
+
+#: src/window/window.py:127
+msgid "Obese [Class 2]"
+msgstr "Adipositas [Grad II]"
+
+#: src/window/window.py:128
+msgid "Obese [Class 3]"
+msgstr "Adipositas [Grad III]"
+
+#: src/window/window.py:135
+msgid "Unhealthy"
+msgstr "Ungesund"
+
+#: src/window/window.py:143
+msgid "Obese"
+msgstr "Adipositas"
+
+#: src/window/window.py:149
+msgid "Very lean"
+msgstr "Sehr schlank"
+
+#: src/window/window.py:150
+msgid "Lean"
+msgstr "Schlank"
+
+#: src/window/window.py:151 src/window/window.blp:74
+msgid "Average"
+msgstr "Durchschnitt"
+
+#: src/window/window.py:152
+msgid "Above average"
+msgstr "Überdurchschnittlich"
+
+#: src/window/window.py:153
+msgid "High"
+msgstr "Hoch"
+
+#: src/window/window.py:277
+msgid "Result copied"
+msgstr "Ergebnis kopiert"
+
+#: src/window/window.blp:45
+msgid "Inputs"
+msgstr "Eingaben"
+
+#: src/window/window.blp:47
+msgid "Height"
+msgstr "Größe"
+
+#: src/window/window.blp:48
+msgid "Affects BMI and BRI"
+msgstr "Beeinflusst BMI und BRI"
+
+#: src/window/window.blp:54
+msgid "Weight"
+msgstr "Gewicht"
+
+#: src/window/window.blp:55
+msgid "Affects BMI"
+msgstr "Beeinflusst BMI"
+
+#: src/window/window.blp:67
+msgid "Advanced inputs"
+msgstr "Erweiterte Eingaben"
+
+#: src/window/window.blp:69
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: src/window/window.blp:71
+msgid "Affects healthy/unhealthy thresholds for Waist to Hip ratio"
+msgstr "Beeinflusst Taille/Hüfte-Verhältnis"
+
+#: src/window/window.blp:74
+msgid "Female"
+msgstr "Weiblich"
+
+#: src/window/window.blp:74
+msgid "Male"
+msgstr "Männlich"
+
+#: src/window/window.blp:78
+msgid "Age"
+msgstr "Alter"
+
+#: src/window/window.blp:79 src/widgets/time_row.py:12
+msgid "Years"
+msgstr "in Jahren"
+
+#: src/window/window.blp:80
+msgid "Affects healthy/unhealthy thresholds for Waist to Height ratio"
+msgstr "Beeinflusst Taille/Größe-Verhältnis"
+
+#: src/window/window.blp:87
+msgid "Waist"
+msgstr "Taille"
+
+#: src/window/window.blp:88
+msgid "Affects Waist to Height ratio, Waist to Hip ratio and BRI"
+msgstr "Beeinflusst Taille/Größe, Taille/Hüfte und den BRI"
+
+#: src/window/window.blp:94
+msgid "Hip"
+msgstr "Hüftumfang"
+
+#: src/window/window.blp:95
+msgid "Affects Waist to Hip ratio"
+msgstr "Beeinflusst Taille/Hüfte-Verhältnis"
+
+#: src/window/window.blp:107
+msgid "Results"
+msgstr "Ergebnis"
+
+#: src/window/window.blp:110
+msgid "Body Mass Index"
+msgstr "Body-Mass-Index"
+
+#: src/window/window.blp:114
+msgid "Waist / Height"
+msgstr "Taille / Größe"
+
+#: src/window/window.blp:115
+msgid "Waist to height ratio"
+msgstr "Verhältnis von Taillenumfang zu Körpergröße (WHtR)"
+
+#: src/window/window.blp:119
+msgid "Waist / Hip"
+msgstr "Taille / Hüfte"
+
+#: src/window/window.blp:120
+msgid "Waist to hip ratio"
+msgstr "Verhältnis von Taillen- zu Hüftumfang"
+
+#: src/window/window.blp:124
+msgid "BRI"
+msgstr "BRI"
+
+#: src/window/window.blp:125
+msgid "Body Roundness Index"
+msgstr "Body-Roundness-Index"
+
+#: src/window/window.blp:140 src/preferences/preferences.blp:8
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: src/window/window.blp:144
+msgid "About BMI"
+msgstr "Info zu BMI"
+
+#: src/preferences/preferences.py:58
+msgid "Error setting preferences value"
+msgstr "Fehler beim Festlegen des Einstellungenwerts"
+
+#: src/preferences/preferences.blp:12
+msgid "Advanced mode"
+msgstr "Erweiterter Modus"
+
+#: src/preferences/preferences.blp:17
+msgid "Measurement system"
+msgstr "Maßsystem"
+
+#: src/preferences/preferences.blp:21
+msgid "Metric"
+msgstr "Metrisch"
+
+#: src/preferences/preferences.blp:21
+msgid "Imperial"
+msgstr "Imperial"
+
+#: src/widgets/distance_row.py:18 src/widgets/distance_row.py:44
+msgid "Centimetres"
+msgstr "in cm"
+
+#: src/widgets/distance_row.py:41
+msgid "Inches"
+msgstr "in Zoll"
+
+#: src/widgets/mass_row.py:18 src/widgets/mass_row.py:41
+msgid "Kilograms"
+msgstr "in Kilogramm"
+
+#: src/widgets/mass_row.py:38
+msgid "Pounds"
+msgstr "in Pfund"
+
+#: src/widgets/result_dialog.py:41
+msgid "Under {}"
+msgstr "Unter {}"
+
+#: src/widgets/result_dialog.py:43
+msgid "Over {}"
+msgstr "Über {}"
+
+#: src/widgets/result_dialog.py:45
+msgid "From {} to {}"
+msgstr "Von {} bis {}"
+
+#: src/widgets/result_dialog.py:115
+msgid "lb"
+msgstr "lb"
+
+#: src/widgets/result_dialog.py:121
+msgid "kg"
+msgstr "kg"
+
+#: src/widgets/result_dialog.blp:22
+msgid "Result"
+msgstr "Ergebnis"
+
+#: src/widgets/result_dialog.blp:39
+msgid "Thresholds"
+msgstr "Stufen"
+
+#: src/widgets/result_dialog.blp:43
+msgid "Additional context"
+msgstr "Weitere Informationen"
