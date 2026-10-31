@@ -1,29 +1,31 @@
-[config]
 bin = "bmi"
-build-dir = "./build"
-prefix = "~/.local"
+build-dir = "build"
 manifest = "io.github.philippkosarev.bmi.json"
 
-[builds.native]
-building = [
-  "meson setup $build-dir --prefix=$prefix",
-  "meson compile -C $build-dir",
-  "meson install -C $build-dir",
-]
-running = "$bin"
-uninstalling = [
-  "ninja uninstall -C $build-dir",
+clean = "rm -rf {build-dir}"
+
+[targets]
+native = [
+  "{clean}",
+  "meson setup {build-dir} --prefix=~/.local",
+  "meson compile -C {build-dir}",
+  "meson install -C {build-dir}",
+  "[{bin}]",
+  "ninja uninstall -C {build-dir}",
+  "{clean}",
 ]
 
-[builds.flatpak]
-building = [
-  "flatpak-builder --force-clean $build-dir $manifest",
+flatpak = [
+  "{clean}",
+  "flatpak-builder {build-dir} {manifest}",
+  "[flatpak-builder --run {build-dir} {manifest} {bin}]",
+  "{clean}",
 ]
-running = "flatpak-builder --run $build-dir $manifest $bin"
 
-[builds.update-translations]
-updating = [
-  "meson setup $build-dir",
-  "meson compile -C $build-dir $bin-pot",
-  "meson compile -C $build-dir $bin-update-po",
+update-translations = [
+  "{clean}",
+  "meson setup {build-dir}",
+  "meson compile -C {build-dir} {bin}-pot",
+  "meson compile -C {build-dir} {bin}-update-po",
+  "{clean}",
 ]

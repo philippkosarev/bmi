@@ -1,99 +1,104 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # PYTHON_ARGCOMPLETE_OK
 
 # Imports
-import sys, os, shutil, argparse, argcomplete, tomllib, subprocess
+import os
+import sys
+import shlex
+import shutil
+import tomllib
+import argparse
+import argcomplete
+import subprocess
 
-# Helper functions
-def on_config_error(text: str):
-  print(f'Configuration error:\n{text}')
-  sys.exit(1)
+# Constants
+SCRIPT_FILE = __file__
+SCRIPT_DIR = os.path.dirname(__file__)
+SCRIPT_DIR = os.path.normpath(SCRIPT_DIR)
 
-# Parsing config
-config_file = './run-config.toml'
-try:
-  config = tomllib.loads(open(config_file, 'r').read())
-except tomllib.TOMLDecodeError as e:
-  on_config_error(e)
-  sys.exit(1)
-except FileNotFoundError:
-  on_config_error('Configuration file not found.')
-  sys.exit(1)
 
-# Checking config sections
-for section in ['config', 'builds']:
-  if section not in config:
-    on_config_error(f"Missing required section '{item}'.")
+def eprint(*args, **kwargs):
+  kwargs['file'] = sys.stderr
+  print(*args, **kwargs)
+
+
+def load_targets() -> dict:
+  with open('run-config.toml', 'rb') as fp:
+    cfg = tomllib.load(fp)
+
+  targets = cfg.get('targets')
+  if not targets:
+    eprint('Error: Config has no targets.')
     sys.exit(1)
 
-# Shorthand vars
-builds = config.get('builds')
-config = config.get('config')
+  variables = cfg.copy()
+  variables.pop('targets')
 
-# Checking config items
-for item in ['build-dir']:
-  value = config.get(item)
-  if not value:
-    on_config_error(f"Missing required item '{item}' in [config] section.")
-    sys.exit(1)
+  for key, value in variables.items():
+    for skey, svalue in variables.items():
+      value = value.replace('{' + skey + '}', svalue)
+    variables[key] = value
 
-# Parsing input
-parser = argparse.ArgumentParser(
-  description = 'Application runner',
-)
-build_choices = [build for build in builds]
-parser.add_argument(
-  'build', choices=build_choices,
-  default=build_choices[0],
-  const=build_choices[0],
-  nargs='?',
-)
-argcomplete.autocomplete(parser)
-args = parser.parse_args()
-selected_build = builds.get(args.build)
-
-# Cleaning build-dir
-build_dir = config.get('build-dir')
-if os.path.isdir(build_dir):
-  shutil.rmtree(build_dir)
-os.mkdir(build_dir)
-
-def configure_command(command: str) -> str:
-  for key in config:
-    if f'${key}' in command:
-      command = command.replace(f'${key}', config.get(key))
-  return os.path.expanduser(command)
-
-def clear_line():
-  sys.stdout.write("\x1b[2K")
-
-# Running build
-print(f'Running {args.build} build:')
-for msg in selected_build:
-  clear_line()
-  print(msg.title() + '...')
-  command = selected_build.get(msg)
-  command_type = type(command)
-  if command_type is str:
-    command = configure_command(command)
-    os.system(command)
-  elif command_type is list:
-    for subcommand in command:
-      subcommand = configure_command(subcommand)
-      clear_line()
-      print(f" Running '{subcommand}'...", end='\r')
-      process = subprocess.run(
-        subcommand.split(' '), stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-      )
-      status = process.returncode
-      if status != 0:
-        clear_line()
-        print(f"Encountered error running '{subcommand}':")
-        print(process.stdout.decode('utf-8'))
+  for target, commands in targets.items():
+    if not commands:
+      eprint(f"Error: Target '{target}' is empty.")
+      sys.exit(1)
+    for i, cmd in enumerate(commands):
+      isolate = cmd.startswith('[') and cmd.endswith(']')
+      if isolate:
+        cmd = cmd.removeprefix('[').removesuffix(']')
+      for key, value in variables.items():
+        cmd = cmd.replace('{' + key + '}', value)
+      cmd = shlex.split(cmd)
+      if len(cmd) < 1:
+        eprint(f"Error: Target '{target}' has empty command.")
         sys.exit(1)
-  else:
-    raise NotImplementedError()
+      exe = cmd[0]
+      if not isolate and not shutil.which(exe):
+        eprint(f"Error: Program '{exe}' not installed.")
+        sys.exit(1)
+      commands[i] = (isolate, cmd)
+    targets[target] = commands
 
-# Deleting build dir
-if os.path.isdir(build_dir):
-  shutil.rmtree(build_dir)
+  return targets
+
+
+def main():
+  targets = load_targets()
+  target_names = list(targets)
+
+  parser = argparse.ArgumentParser()
+  parser.add_argument(
+    'target', choices=target_names,
+    default=target_names[0],
+    const=target_names[0],
+    nargs='?',
+  )
+
+  argcomplete.autocomplete(parser)
+  args = parser.parse_args()
+  commands = targets[args.target]
+
+  for isolate, args in commands:
+    print(' '.join(args))
+    if isolate:
+      try:
+        subprocess.run(args, cwd=SCRIPT_DIR)
+      except KeyboardInterrupt:
+        print()
+    else:
+      proc = subprocess.run(
+        args,
+        cwd=SCRIPT_DIR,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+      )
+      exit_code = proc.returncode
+      if exit_code != getattr(os, 'EX_OK', 0):
+        print(f'\nCommand failed with code {exit_code}:')
+        print(proc.stdout.decode())
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+  sys.exit(main())
