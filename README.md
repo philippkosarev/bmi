@@ -1,36 +1,31 @@
-<h1>BMI</h1>
+# BMI
+Calculator for body health metrics. Built with GTK4 and LibAdwaita.
 
-An open-source calculator for body health metrics, built with GTK4 and LibAdwaita.
+<img width='640' src='screenshots/advanced-dark.png'/>
 
-<img width='640' alt='Download on Flathub' src='screenshots/advanced-dark.png'/>
+## Installation
+Available as a [Flatpak](https://flatpak.org)
+on [Flathub](https://flathub.org/apps/details/io.github.philippkosarev.bmi)
+and via [Github Releases](https://github.com/philippkosarev/bmi/releases).
 
-<p>
-<h2>Installing</h2>
-<p>
-Available on <a href='https://flathub.org/apps/details/io.github.philippkosarev.bmi'>Flathub</a>.
-</a>
-<p>
 <a href='https://flathub.org/apps/details/io.github.philippkosarev.bmi'>
-<img width='176' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en' />
+  <img
+    width='176'
+    alt='Download on Flathub'
+    src='https://flathub.org/api/badge?locale=en'
+  />
 </a>
-</p>
-and via <a href='https://github.com/PhilippKosarev/bmi/releases'>Github Releases</a>.
-</p>
 
-<p>
-<h2>Building</h2>
-This project is built using <a href='https://apps.gnome.org/en-GB/Builder'>Gnome Builder</a>.
+## Development
+### Dependencies
+You will need these dependencies to build and run the app:
+- [Python 3](https://www.python.org)
+- [PyGObject](https://pypi.org/project/PyGObject)
+- [Meson](https://mesonbuild.com)
+- [blueprint-compiler](https://gnome.pages.gitlab.gnome.org/blueprint-compiler)
+- [flatpak-builder](https://docs.flatpak.org/en/latest/flatpak-builder.html)
 
-<h3>Dependencies</h3>
-
-- python
-- PyGObject
-- blueprint-compiler
-- meson
-- flatpak-builder
-
-<h3>Running</h3>
-
+### Running
 Use the project's runner script:
 ```sh
 ./run native # Native build
