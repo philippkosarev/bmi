@@ -3,30 +3,29 @@ using Adw 1;
 
 template $BmiPreferences: Adw.PreferencesDialog {
   content-width: 380;
+  content-height: 250;
 
   Adw.PreferencesPage {
     title: _("Preferences");
 
     $Group {
-      $SwitchRow {
-        title: _("Advanced mode");
-        icon-name: "accessories-calculator-symbolic";
-        key: "advanced-mode";
-      }
+
       $DropDownRow {
-        title: _("Measurement system");
-        icon-name: "ruler-angled-symbolic";
         key: "measurement-system";
+        icon-name: "ruler-angled-symbolic";
+        title: _("Units");
+        subtitle: _("Measurement system");
         model: StringList {
           strings [_("Metric"), _("Imperial")]
         };
       }
-      $SwitchRow {
-        title: _("Remember inputs");
-        icon-name: "user-bookmarks-symbolic";
-        key: "remember-inputs";
-      }
 
+      $SwitchRow {
+        key: "remember-inputs";
+        icon-name: "user-bookmarks-symbolic";
+        title: _("Remember inputs");
+        subtitle: _("Restore inputs from last session");
+      }
     }
   }
 }

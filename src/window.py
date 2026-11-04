@@ -16,11 +16,6 @@ class BmiWindow(Adw.ApplicationWindow):
 
   # Important Widgets
   toast_overlay = Gtk.Template.Child()
-  clamp = Gtk.Template.Child()
-  orientable_box = Gtk.Template.Child()
-  simple_breakpoint = Gtk.Template.Child()
-  advanced_breakpoint = Gtk.Template.Child()
-  advanced_inputs_clamp = Gtk.Template.Child()
 
   # Input rows
   height_input_row = Gtk.Template.Child()
@@ -93,16 +88,7 @@ class BmiWindow(Adw.ApplicationWindow):
     self.update_whtr()
     # Connecting stuff
     self.settings.connect('changed', self._on_settings_value_changed)
-    self.simple_breakpoint.connect('apply', self._on_simple_breakpoint_apply)
-    self.simple_breakpoint.connect('unapply', self._on_simple_breakpoint_unapply)
-    self.advanced_breakpoint.connect('apply', self._on_advanced_breakpoint_apply)
-    self.advanced_breakpoint.connect('unapply', self._on_advanced_breakpoint_unapply)
     self.connect('close-request', self._on_close_request)
-
-  def _on_input_row_value_changed(self, row, *args):
-    if self.settings['remember-inputs']:
-      self.settings[row.key] = row.value
-    self.inputs.set_property(row.key, row.value)
 
   def get_settings(self) -> Gio.Settings:
     return self.settings
@@ -202,21 +188,12 @@ class BmiWindow(Adw.ApplicationWindow):
 
   def _on_settings_value_changed(self, settings: Gio.Settings, key: str):
     handlers = {
-      'advanced-mode': self._on_advanced_mode_changed,
       'measurement-system': self._on_measurement_system_changed,
       'remember-inputs': self._on_remember_inputs_changed,
     }
     handler = handlers.get(key)
     if handler:
       handler()
-
-  def _on_advanced_mode_changed(self):
-    mode = self.settings['advanced-mode']
-    self.advanced_inputs_clamp.set_visible(mode)
-    self.whtr_result_row.set_visible(mode)
-    self.whr_result_row.set_visible(mode)
-    self.bri_result_row.set_visible(mode)
-    self.update_breakpoints()
 
   def _on_measurement_system_changed(self):
     imperial = bool(self.settings['measurement-system'])
@@ -242,60 +219,6 @@ class BmiWindow(Adw.ApplicationWindow):
   def reset_remembered_inputs(self):
     for key in ['height', 'mass', 'gender', 'age', 'waist', 'hip']:
       self.settings.reset(key)
-
-  def _eval_breakpoint(self, adw_breakpoint):
-    width = self.get_size(Gtk.Orientation.HORIZONTAL)
-    height = self.get_size(Gtk.Orientation.VERTICAL)
-    condition = adw_breakpoint.get_condition().to_string()
-    condition = condition.replace('min-width:', 'width >')
-    condition = condition.replace('max-width:', 'width <')
-    condition = condition.replace('min-height:', 'height >')
-    condition = condition.replace('max-height:', 'height <')
-    condition = condition.split('and')
-    for statement in condition:
-      combined = re.search('([0-9]).*', statement).group().strip()
-      units = combined[-2] + combined[-1] # Last 2 chars (i.e. px, sp or pt)
-      value = float(combined.removesuffix(units))
-      adw_lenght_units = {u.name.lower(): u for u in Adw.LengthUnit}
-      units = adw_lenght_units[units]
-      pixels = math.ceil( Adw.LengthUnit.to_px(units, value) )
-      statement = statement.replace(combined, str(pixels))
-      if not eval(statement):
-        return False
-    return True
-
-  def _on_simple_breakpoint_apply(self, adw_breakpoint = None):
-    if self.settings['advanced-mode']:
-      return
-    self.set_ui_orientation(Gtk.Orientation.HORIZONTAL)
-
-  def _on_simple_breakpoint_unapply(self, adw_breakpoint = None):
-    if self.settings['advanced-mode']:
-      return
-    self.set_ui_orientation(Gtk.Orientation.VERTICAL)
-
-  def _on_advanced_breakpoint_apply(self, adw_breakpoint = None):
-    self.set_ui_orientation(Gtk.Orientation.HORIZONTAL)
-
-  def _on_advanced_breakpoint_unapply(self, adw_breakpoint = None):
-    self.set_ui_orientation(Gtk.Orientation.VERTICAL)
-
-  def set_ui_orientation(self, orientation: Gtk.Orientation):
-    self.orientable_box.set_orientation(orientation)
-    if orientation is Gtk.Orientation.HORIZONTAL:
-      self.orientable_box.set_spacing(24);
-    else:
-      self.orientable_box.set_spacing(16);
-
-  def update_breakpoints(self):
-    if self._eval_breakpoint(self.advanced_breakpoint):
-      self._on_advanced_breakpoint_apply()
-    else:
-      self._on_advanced_breakpoint_unapply()
-    if self._eval_breakpoint(self.simple_breakpoint):
-      self._on_simple_breakpoint_apply()
-    else:
-      self._on_simple_breakpoint_unapply()
 
   def _on_close_request(self, *args):
     """Action after closing the app window."""

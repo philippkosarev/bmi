@@ -13,10 +13,10 @@ class MassRow(SpinRow):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    self._last_imperial = type(self).imperial.default
     GLib.idle_add(self._post_init)
 
   def _post_init(self):
+    self._last_imperial = self.imperial
     self._on_imperial_changed()
     self.connect('notify::imperial', self._on_imperial_changed)
 

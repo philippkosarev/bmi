@@ -3,19 +3,23 @@ using Adw 1;
 
 template $BmiWindow: Adw.ApplicationWindow {
   title: "BMI";
-  height-request: 240;
+  height-request: 440;
 
-  Adw.Breakpoint simple_breakpoint {
-    condition ("min-width: 580sp and max-height: 350sp")
-  }
-  Adw.Breakpoint advanced_breakpoint {
-    condition ("min-width: 840sp and max-height: 730sp")
+  Adw.Breakpoint {
+    condition ("min-width: 450pt")
+    setters {
+      main_box.orientation: horizontal;
+      main_clamp.maximum-size: 520;
+      main_clamp.tightening-threshold: 300;
+    }
   }
 
   [content]
   Adw.ToolbarView {
+
     [top]
     Adw.HeaderBar {
+
       [end]
       MenuButton {
         icon-name: "open-menu-symbolic";
@@ -25,114 +29,92 @@ template $BmiWindow: Adw.ApplicationWindow {
     }
 
     content: Adw.ToastOverlay toast_overlay {
+
       ScrolledWindow {
         hscrollbar-policy: never;
 
-        Adw.Clamp clamp {
-          maximum-size: 1100;
+        Adw.Clamp main_clamp {
+          unit: pt;
+          maximum-size: 270;
+          tightening-threshold: 200;
 
-          Box orientable_box {
+          Box main_box {
+            styles ["main-box"]
             orientation: vertical;
-            margin-top: 4;
-            margin-bottom: 20;
-            margin-start: 20;
-            margin-end: 20;
 
-            // Basic inputs
-            Adw.Clamp basic_inputs_clamp {
-              maximum-size: 400;
+            Adw.PreferencesGroup {
+              hexpand: true;
 
-              Adw.PreferencesGroup {
-                title: _("Inputs");
+              $DistanceRow height_input_row {
+                title: _("Height");
+                tooltip-text: _("Affects BMI and BRI");
+                lower: 10;
+                upper: 999;
+              }
 
-                $DistanceRow height_input_row {
-                  title: _("Height");
-                  tooltip-text: _("Affects BMI and BRI");
-                  lower: 10;
-                  upper: 999;
-                }
+              $MassRow weight_input_row {
+                title: _("Weight");
+                tooltip-text: _("Affects BMI");
+                lower: 10;
+                upper: 999;
+              }
 
-                $MassRow weight_input_row {
-                  title: _("Weight");
-                  tooltip-text: _("Affects BMI");
-                  lower: 10;
-                  upper: 999;
-                }
+              $DropDownRow gender_input_row {
+                title: _("Gender");
+                subtitle: _("Biological gender");
+                tooltip-text: _("Affects healthy/unhealthy thresholds for Waist to Hip ratio");
+                model: StringList {
+                  strings [_("Average"), _("Female"), _("Male")]
+                };
+              }
+
+              $SpinRow age_input_row {
+                title: _("Age");
+                subtitle: _("Years");
+                tooltip-text: _("Affects healthy/unhealthy thresholds for Waist to Height ratio");
+                digits: 0;
+                lower: 18;
+                upper: 150;
+              }
+
+              $DistanceRow waist_input_row {
+                title: _("Waist");
+                tooltip-text: _("Affects Waist to Height ratio, Waist to Hip ratio and BRI");
+                lower: 10;
+                upper: 999;
+              }
+
+              $DistanceRow hip_input_row {
+                title: _("Hip");
+                tooltip-text: _("Affects Waist to Hip ratio");
+                lower: 10;
+                upper: 999;
               }
             }
 
-            // Advanced inputs
-            Adw.Clamp advanced_inputs_clamp {
-              maximum-size: 400;
+            Adw.PreferencesGroup {
+              hexpand: true;
 
-              Adw.PreferencesGroup {
-                title: _("Advanced inputs");
-
-                $DropDownRow gender_input_row {
-                  title: _("Gender");
-                  subtitle: _("Biological gender");
-                  tooltip-text: _("Affects healthy/unhealthy thresholds for Waist to Hip ratio");
-                  model: StringList {
-                    strings [_("Average"), _("Female"), _("Male")]
-                  };
-                }
-
-                $SpinRow age_input_row {
-                  title: _("Age");
-                  subtitle: _("Years");
-                  tooltip-text: _("Affects healthy/unhealthy thresholds for Waist to Height ratio");
-                  digits: 0;
-                  lower: 18;
-                  upper: 150;
-                }
-
-                $DistanceRow waist_input_row {
-                  title: _("Waist");
-                  tooltip-text: _("Affects Waist to Height ratio, Waist to Hip ratio and BRI");
-                  lower: 10;
-                  upper: 999;
-                }
-
-                $DistanceRow hip_input_row {
-                  title: _("Hip");
-                  tooltip-text: _("Affects Waist to Hip ratio");
-                  lower: 10;
-                  upper: 999;
-                }
+              $ResultRow bmi_result_row {
+                title: _("BMI");
+                tooltip-text: _("Body Mass Index");
+                digits: 2;
+                context-description: _("With the same height, this is what weight you would need to achieve different BMI thresholds.");
               }
-            }
 
-            // Results
-            Adw.Clamp results_clamp {
-              maximum-size: 400;
+              $ResultRow bri_result_row {
+                title: _("BRI");
+                tooltip-text: _("Body Roundness Index");
+              }
 
-              Adw.PreferencesGroup {
-                title: _("Results");
+              $ResultRow whr_result_row {
+                title: _("WHR");
+                tooltip-text: _("Waist to hip ratio");
+              }
 
-                $ResultRow bmi_result_row {
-                  title: _("BMI");
-                  tooltip-text: _("Body Mass Index");
-                  digits: 2;
-                  context-description: _("With the same height, this is what weight you would need to achieve different BMI thresholds.");
-                }
-
-                $ResultRow bri_result_row {
-                  title: _("BRI");
-                  tooltip-text: _("Body Roundness Index");
-                  digits: 3;
-                }
-
-                $ResultRow whr_result_row {
-                  title: _("WHR");
-                  tooltip-text: _("Waist to hip ratio");
-                  digits: 3;
-                }
-
-                $ResultRow whtr_result_row {
-                  title: _("WHtR");
-                  tooltip-text: _("Waist to height ratio");
-                  digits: 3;
-                }
+              $ResultRow whtr_result_row {
+                title: _("WHtR");
+                tooltip-text: _("Waist to height ratio");
               }
             }
           }

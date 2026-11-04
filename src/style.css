@@ -1,3 +1,8 @@
 .light-blue {
   color: #62a0ea;
 }
+
+.main-box {
+  margin: 10pt;
+  border-spacing: 15pt;
+}

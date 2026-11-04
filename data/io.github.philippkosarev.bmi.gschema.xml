@@ -7,11 +7,6 @@
       <summary>Window size</summary>
     </key>
 
-    <key name="advanced-mode" type="b">
-      <default>false</default>
-      <summary>Toggles Advanced Mode</summary>
-    </key>
-
     <key name="remember-inputs" type="b">
       <default>true</default>
       <summary>Remember inputs</summary>

@@ -196,7 +196,7 @@ class ResultRow(Adw.ActionRow):
 
   # Properties
   result = GObject.Property(type=float, default=0.0)
-  digits = GObject.Property(type=int, default=2)
+  digits = GObject.Property(type=int, default=3)
   result_label = GObject.Property(type=str, default='0.0')
   thresholds = GObject.Property(type=Thresholds)
   context_description = GObject.Property(type=str, default='')
@@ -205,7 +205,7 @@ class ResultRow(Adw.ActionRow):
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
     # Setting up self
-    self.set_size_request(300, 60)
+    self.set_size_request(250, 60)
     self.set_activatable(True)
     self.set_css_classes(['heading'])
     # Creating the result label
