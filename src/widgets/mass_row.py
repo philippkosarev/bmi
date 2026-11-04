@@ -1,9 +1,9 @@
 # Imports
-from gi.repository import GObject, Gtk, Adw
+from gi.repository import GLib, GObject
 
 # Internal imports
 from .spin_row import SpinRow
-from .shared import *
+from .shared import kg_to_lb, lb_to_kg
 
 
 class MassRow(SpinRow):
@@ -13,21 +13,23 @@ class MassRow(SpinRow):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    self.set_subtitle(_('Kilograms'))
+    self._last_imperial = type(self).imperial.default
+    GLib.idle_add(self._post_init)
+
+  def _post_init(self):
+    self._on_imperial_changed()
     self.connect('notify::imperial', self._on_imperial_changed)
-    self._last_imperial = self.imperial
 
   def _on_imperial_changed(self, *args):
-    if self.imperial == self._last_imperial:
-      return
-    value = self.get_value()
-    if self.imperial is True:
+    if self.imperial:
+      subtitle = _("Pounds")
       convert_func = kg_to_lb
-      self.set_subtitle(_('Pounds'))
     else:
+      subtitle = _('Kilograms')
       convert_func = lb_to_kg
-      self.set_subtitle(_('Kilograms'))
-    self.value = convert_func(self.value)
+    if self.imperial != self._last_imperial:
+      self.value = convert_func(self.value)
+    self.set_subtitle(subtitle)
     self._last_imperial = self.imperial
 
   def get_imperial(self) -> bool:

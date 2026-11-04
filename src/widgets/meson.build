@@ -10,7 +10,6 @@ widget_sources = [
   'mass_row.py',
   # Output
   'result_row.py',
-  'result_dialog.py',
   # Other
   'group.py',
 ]

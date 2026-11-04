@@ -3,14 +3,18 @@ using Adw 1;
 
 template $ResultDialog: Adw.Dialog {
   content-width: 420;
+
   Adw.ToolbarView {
+
     [top]
     Adw.HeaderBar {}
     content: ScrolledWindow {
       propagate-natural-height: true;
       max-content-height: 620;
+
       Adw.Clamp {
         maximum-size: 375;
+
         Box {
           margin-top: 6;
           margin-bottom: 6;
@@ -18,27 +22,35 @@ template $ResultDialog: Adw.Dialog {
           margin-end: 12;
           orientation: vertical;
           spacing: 16;
+
           Adw.PreferencesGroup {
             title: _("Result");
+
             Box {
               margin-top: 4;
               styles ["card"]
               orientation: vertical;
               spacing: 6;
+
               Label result_label {
                 margin-top: 12;
+                selectable: true;
                 styles ["title-1"]
               }
+
               Label feedback_label {
                 margin-bottom: 12;
                 styles ["heading"]
               }
             }
           }
+
           Adw.PreferencesGroup thresholds_group {
             title: _("Thresholds");
             margin-bottom: 10;
+            visible: false;
           }
+
           Adw.PreferencesGroup context_group {
             title: _("Additional context");
             margin-bottom: 10;
