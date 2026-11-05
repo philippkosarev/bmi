@@ -4,12 +4,47 @@ All distance values are assumed to be in centimetres.
 All mass values are assumed to be in kilograms.
 """
 
-
-# Imports
 import math
+from gi.repository import GObject
 
-# Internal imports
-from .widgets.shared import Gender
+
+class Gender(GObject.GEnum):
+  """Enumeration representing a biological gender."""
+  AVERAGE = 0
+  FEMALE = 1
+  MALE = 2
+
+
+class Units(GObject.GEnum):
+  """Enumeration representing a measurement system."""
+  METRIC = 0
+  IMPERIAL = 1
+
+
+_KG_TO_LB = 2.2046226218
+_LB_TO_KG = 1 / _KG_TO_LB
+_IN_TO_CM = 2.54
+_CM_TO_IN = 1 / _IN_TO_CM
+
+
+def kg_to_lb(value: float) -> float:
+  """Converts kilograms to pounds"""
+  return value * _KG_TO_LB
+
+
+def lb_to_kg(value: float) -> float:
+  """Converts pounds to kilograms."""
+  return value * _LB_TO_KG
+
+
+def in_to_cm(value: float) -> float:
+  """Converts inches to centimetres."""
+  return value * _IN_TO_CM
+
+
+def cm_to_in(value: float) -> float:
+  """Converts centimetres to inches."""
+  return value * _CM_TO_IN
 
 
 def bmi(height: float, mass: float) -> float:

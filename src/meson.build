@@ -51,9 +51,9 @@ configure_file(
 bmi_sources = [
   '__init__.py',
   'main.py',
-  'calculate.py',
   'window.py',
   'preferences.py',
+  'calc.py',
 ]
 
 install_data(bmi_sources, install_dir: moduledir)

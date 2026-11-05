@@ -11,6 +11,7 @@ template $BmiWindow: Adw.ApplicationWindow {
       main_box.orientation: horizontal;
       main_clamp.maximum-size: 520;
       main_clamp.tightening-threshold: 300;
+      main_box.margin-bottom: 0;
     }
   }
 
@@ -41,18 +42,19 @@ template $BmiWindow: Adw.ApplicationWindow {
           Box main_box {
             styles ["main-box"]
             orientation: vertical;
+            margin-bottom: 70;
 
             Adw.PreferencesGroup {
               hexpand: true;
 
-              $DistanceRow height_input_row {
+              $SpinRow height_input_row {
                 title: _("Height");
                 tooltip-text: _("Affects BMI and BRI");
                 lower: 10;
                 upper: 999;
               }
 
-              $MassRow weight_input_row {
+              $SpinRow weight_input_row {
                 title: _("Weight");
                 tooltip-text: _("Affects BMI");
                 lower: 10;
@@ -77,14 +79,14 @@ template $BmiWindow: Adw.ApplicationWindow {
                 upper: 150;
               }
 
-              $DistanceRow waist_input_row {
+              $SpinRow waist_input_row {
                 title: _("Waist");
                 tooltip-text: _("Affects Waist to Height ratio, Waist to Hip ratio and BRI");
                 lower: 10;
                 upper: 999;
               }
 
-              $DistanceRow hip_input_row {
+              $SpinRow hip_input_row {
                 title: _("Hip");
                 tooltip-text: _("Affects Waist to Hip ratio");
                 lower: 10;

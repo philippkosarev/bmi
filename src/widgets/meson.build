@@ -6,8 +6,6 @@ widget_sources = [
   'switch_row.py',
   'dropdown_row.py',
   'spin_row.py',
-  'distance_row.py',
-  'mass_row.py',
   # Output
   'result_row.py',
   # Other

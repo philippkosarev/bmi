@@ -40,25 +40,3 @@ def get_children(widget: Gtk.Widget) -> list:
     if child is None:
       return children
     children.append(child)
-
-
-def kg_to_lb(value: float) -> float:
-  return value * 2.2046226218
-
-
-_lb_to_kg = 1 / kg_to_lb(1)
-
-
-def lb_to_kg(value: float) -> float:
-  return value * _lb_to_kg
-
-
-def in_to_cm(value):
-  return value * 2.54
-
-
-_cm_to_in = 1 / in_to_cm(1)
-
-
-def cm_to_in(value):
-  return value * _cm_to_in
