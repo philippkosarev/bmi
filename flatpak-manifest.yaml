@@ -2,7 +2,7 @@ id: io.github.philippkosarev.bmi
 command: bmi
 
 runtime: org.gnome.Platform
-runtime-version: '49'
+runtime-version: '51'
 sdk: org.gnome.Sdk
 
 finish-args:
@@ -24,9 +24,10 @@ cleanup:
 
 modules:
 - name: bmi
-  builddir: true
   buildsystem: meson
+  builddir: true
+  config-opts:
+    - --buildtype=debug
   sources:
-  - type: git
-    url: https://github.com/philippkosarev/bmi
-    tag: "v4.1"
+  - type: dir
+    path: ./
