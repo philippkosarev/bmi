@@ -106,6 +106,10 @@ class ResultDialog(Adw.Dialog):
       'notify::context-thresholds', self._on_context_thresholds_changed,
     )
 
+  def set_result_css_classes(self, css_classes: list):
+    self._result_label.set_css_classes(['title-1', *css_classes])
+    self._feedback_label.set_css_classes(css_classes)
+
   def get_result_label(self) -> str:
     return self.result_label
 
@@ -205,14 +209,22 @@ class ResultRow(Adw.ActionRow):
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
     # Setting up self
-    self.set_size_request(250, 60)
+    self.set_name('result-row')
     self.set_activatable(True)
-    self.set_css_classes(['heading'])
+    # Setting up the subtitle label
+    subtitle_label = (
+      self.get_child()
+      .get_last_child()
+      .get_prev_sibling()
+      .get_last_child()
+    )
+    subtitle_label.set_max_width_chars(len('underweight'))
     # Creating the result label
     self._result_label = Gtk.Label(
       label=self.result_label,
       valign=Gtk.Align.CENTER,
       css_classes=['title-3'],
+      name='result-label'
     )
     self.add_suffix(self._result_label)
     # Creating the info button
@@ -221,8 +233,10 @@ class ResultRow(Adw.ActionRow):
       css_classes=['circular', 'flag'],
       icon_name='help-about-symbolic',
       visible=False,
+      name='info-button',
     )
     self.connect('notify::thresholds', self._on_thresholds_changed)
+    self.connect('activated', self._on_activated)
     self._info_button.connect('clicked', self._on_info_button_clicked)
     self.add_suffix(self._info_button)
     GLib.idle_add(self._post_init)
@@ -235,11 +249,16 @@ class ResultRow(Adw.ActionRow):
     )
     self._on_result_changed()
 
+  def get_css_classes(self) -> list:
+    styles = super().get_css_classes()
+    if 'activatable' in styles:
+      styles.remove('activatable')
+    return styles
+
   def set_css_classes(self, css_classess: list):
-    styles = ['heading', *css_classess]
     if self.get_activatable():
-      styles.append('activatable')
-    super().set_css_classes(styles)
+      css_classess.append('activatable')
+    super().set_css_classes(css_classess)
 
   def set_digits(self, digits: int):
     self.digits = digits
@@ -279,12 +298,17 @@ class ResultRow(Adw.ActionRow):
   def set_context_thresholds(self, thresholds: Thresholds):
     self.context_thresholds = thresholds
 
+  def _on_activated(self, *args):
+    clipboard = self.get_root().get_display().get_clipboard()
+    clipboard.set(self.result_label)
+
   def _on_info_button_clicked(self, *args):
     self.show_dialog()
 
   def show_dialog(self):
     dialog = ResultDialog()
     dialog.set_title(self.get_title())
+    dialog.set_result_css_classes(self.get_css_classes())
     dialog.set_result_label(self.result_label)
     dialog.set_feedback_label(self.get_subtitle())
     dialog.set_thresholds(self.thresholds)
@@ -303,8 +327,8 @@ class ResultRow(Adw.ActionRow):
 
   def _on_result_changed(self, *args):
     self._update_feedback()
-    self.result_label = str(round(self.result, self.digits))
+    self.result_label = f'{self.result:.{self.digits}f}'
 
   def _on_thresholds_changed(self, *args):
     self._update_feedback()
-    self._info_button.set_visible(self.thresholds is not None)
+    self._info_button.set_visible(bool(self.thresholds))

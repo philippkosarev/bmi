@@ -3,6 +3,7 @@ using Adw 1;
 
 template $ResultDialog: Adw.Dialog {
   content-width: 420;
+  name: "result-dialog";
 
   Adw.ToolbarView {
 
@@ -27,20 +28,19 @@ template $ResultDialog: Adw.Dialog {
             title: _("Result");
 
             Box {
-              margin-top: 4;
               styles ["card"]
+              name: "result-box";
               orientation: vertical;
-              spacing: 6;
 
               Label result_label {
-                margin-top: 12;
-                selectable: true;
                 styles ["title-1"]
+                name: "result-label";
+                selectable: true;
               }
 
               Label feedback_label {
-                margin-bottom: 12;
                 styles ["heading"]
+                name: "feedback-label";
               }
             }
           }

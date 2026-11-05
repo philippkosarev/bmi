@@ -81,7 +81,7 @@ class BmiWindow(Adw.ApplicationWindow):
       self.whr_result_row,
       self.bri_result_row,
     ]:
-      row.connect('activated', self.copy_result)
+      row.connect('activated', self._on_result_copied)
     # Calculating initial results
     self.recalculate_results()
     self._initialised = True
@@ -213,9 +213,7 @@ class BmiWindow(Adw.ApplicationWindow):
     self.update_whtr()
     self.update_whtr_thresholds()
 
-  def copy_result(self, row: ResultRow):
-    clipboard = Gdk.Display.get_default().get_clipboard()
-    clipboard.set(row.result_label)
+  def _on_result_copied(self, row: ResultRow):
     self.show_toast(_("Result copied"))
 
   def show_toast(self, text: str):

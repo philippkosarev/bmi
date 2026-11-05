@@ -7,6 +7,35 @@
   border-spacing: 15pt;
 }
 
+#result-row box.header {
+  border-spacing: 10pt;
+}
+
+#result-row .suffixes {
+  border-spacing: 10px;
+}
+
+#result-row label.title, #result-row label.subtitle {
+  font-weight: bold;
+}
+
+#result-row #result-label {
+  font-family: adwaita-mono, monospace;
+}
+
+#result-dialog #result-box {
+  border-spacing: 4pt;
+}
+
+#result-dialog #result-label {
+  margin-top: 6pt;
+}
+
+#result-dialog #feedback-label {
+  margin-bottom: 8pt;
+  font-weight: bold;
+}
+
 toast {
   background-color: color-mix(
     in srgb,
