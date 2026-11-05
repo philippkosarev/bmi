@@ -1,6 +1,6 @@
 bin = "bmi"
 build-dir = "build"
-manifest = "io.github.philippkosarev.bmi.json"
+manifest = "flatpak-manifest.yaml"
 
 clean = "rm -rf {build-dir}"
 
