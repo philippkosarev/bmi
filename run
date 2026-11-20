@@ -64,6 +64,8 @@ def load_targets() -> dict:
 
 
 def main():
+  os.chdir(SCRIPT_DIR)
+
   targets = load_targets()
   target_names = list(targets)
 
@@ -83,13 +85,12 @@ def main():
     print(' '.join(args))
     if isolate:
       try:
-        subprocess.run(args, cwd=SCRIPT_DIR)
+        subprocess.run(args)
       except KeyboardInterrupt:
         print()
     else:
       proc = subprocess.run(
         args,
-        cwd=SCRIPT_DIR,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
       )
