@@ -1,3 +1,2 @@
-# Constants
 VERSION = '@VERSION@'
-APPLICATION_ID = 'io.github.philippkosarev.bmi'
+APP_ID = 'io.github.philippkosarev.bmi'

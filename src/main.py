@@ -1,51 +1,26 @@
-# main.py
-#
-# Copyright 2024 philipp
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# SPDX-License-Identifier: GPL-2.0-or-later
-
-# Imports
 import sys
 
-# Gtk imports
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gtk, Adw, Gio, GObject
+from gi.repository import GObject, Gio, Adw
 
-# Internal imports
-from .data import APPLICATION_ID, VERSION
+from .data import APP_ID, VERSION
 from .window import BmiWindow
 from .preferences import BmiPreferences
 
 
-# The main application singleton class
 class BmiApplication(Adw.Application):
 
   settings = GObject.Property(type=Gio.Settings)
 
   def __init__(self):
     super().__init__(
-      application_id=APPLICATION_ID,
+      application_id=APP_ID,
       flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
       version=VERSION,
     )
     self.settings = Gio.Settings.new(self.get_application_id())
-    # Application-wide shortcuts
     self.create_action('preferences', self.show_preferences, ['<primary>comma'])
     self.create_action('about', self.show_about, ['F1'])
     self.create_action('quit', self.on_quit, ['<primary>q', '<primary>w'])
@@ -85,6 +60,9 @@ class BmiApplication(Adw.Application):
         'Albano Battistella <albanobattistella@gmail.com>',
         'Renato Tavares <dr.renatotavares@gmail.com>',
         'Marcos Sánchez https://github.com/haggen88',
+        'pcharlanes https://github.com/pcharlanes',
+        'Huỳnh Thiện Lộc https://github.com/hthienloc',
+        'Vincon https://github.com/Vincenderman',
       ]),
       copyright    = '© 2024 Philipp Kosarev',
       license_type = 'GTK_LICENSE_GPL_2_0',
@@ -97,8 +75,6 @@ class BmiApplication(Adw.Application):
     self.quit()
 
   def do_activate(self):
-    """Called when the application is activated."""
-    # We raise the application's main window, creating it if necessary.
     window = self.get_active_window()
     if not window:
       window = BmiWindow(self)
@@ -112,7 +88,6 @@ class BmiApplication(Adw.Application):
       self.set_accels_for_action(f'app.{name}', shortcuts)
 
 
-# The application's entry point.
 def main():
   app = BmiApplication()
   return app.run(sys.argv)
