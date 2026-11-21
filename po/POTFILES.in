@@ -8,20 +8,17 @@ data/io.github.philippkosarev.bmi.gschema.xml
 
 # Main
 src/main.py
-src/window/window.py
-src/window/window.blp
-src/preferences/preferences.py
-src/preferences/preferences.blp
+src/window.py
+src/window.blp
+src/preferences.py
+src/preferences.blp
 
 # Widgets
+src/widgets/shared.py
+src/widgets/group.py
 src/widgets/base_row.py
 src/widgets/switch_row.py
 src/widgets/dropdown_row.py
 src/widgets/spin_row.py
-src/widgets/distance_row.py
-src/widgets/mass_row.py
-src/widgets/time_row.py
 src/widgets/result_row.py
-src/widgets/result_row.blp
-src/widgets/result_dialog.py
 src/widgets/result_dialog.blp

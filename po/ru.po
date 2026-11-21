@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bmi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 23:34+0100\n"
+"POT-Creation-Date: 2026-11-21 21:29+0000\n"
 "PO-Revision-Date: 2025-04-27 16:15+0300\n"
 "Last-Translator: David Sultaniiazov <x1z53@alt-gnome.ru>\n"
 "Language-Team: Russian\n"
@@ -21,346 +21,353 @@ msgstr ""
 "X-Generator: Gtranslator 48.0\n"
 
 #: data/io.github.philippkosarev.bmi.desktop.in:2
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:7
-#: src/window/window.blp:109
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:9 src/window.blp:102
 msgid "BMI"
 msgstr "BMI"
 
 #: data/io.github.philippkosarev.bmi.desktop.in:3
-msgid "Calculate body mass index"
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:10
+#, fuzzy
+msgid "Calculate body health metrics"
 msgstr "Вычисление индекса массы тела"
 
 #: data/io.github.philippkosarev.bmi.desktop.in:9
-msgid "GTK;body;mass;index;calculator"
+#, fuzzy
+msgid "body;mass;index;calculator;bmi;bri;whr;whtr;health"
 msgstr "GTK;body;mass;index;calculator"
 
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:8
-msgid "Body mass index calculator"
-msgstr "Калькулятор индекса массы тела"
-
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:10
-msgid ""
-"BMI is an open-source, body mass index calculator built with GTK4 and "
-"LibAdwaita."
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:12
+#, fuzzy
+msgid "Calculator for body health metrics. Built with GTK4 and LibAdwaita."
 msgstr ""
 "BMI — это калькулятор индекса массы тела с открытым исходным кодом, "
 "построенный с помощью GTK4 и LibAdwaita"
 
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:14
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:16
 msgid "Philipp Kosarev"
 msgstr "Philipp Kosarev"
 
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:52
-msgid "BMI Basic Mode Dark Theme"
-msgstr "BMI Базовый режим Тёмная тема"
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:59
+msgid "Landscape dark theme"
+msgstr ""
 
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:56
-msgid "BMI Basic Mode Light Theme"
-msgstr "BMI Базовый режим Светлая тема"
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:63
+msgid "Landscape light theme"
+msgstr ""
 
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:60
-msgid "BMI Advanced Mode Dark Theme"
-msgstr "BMI Расширенный режим Тёмная тема"
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:67
+msgid "Portrait dark theme"
+msgstr ""
 
-#: data/io.github.philippkosarev.bmi.metainfo.xml.in:64
-msgid "BMI Advanced Mode Light Theme"
-msgstr "BMI Расширенный режим Светлая тема"
+#: data/io.github.philippkosarev.bmi.metainfo.xml.in:71
+msgid "Portrait light theme"
+msgstr ""
 
 #: data/io.github.philippkosarev.bmi.gschema.xml:7
 msgid "Window size"
 msgstr ""
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:12
-#, fuzzy
-msgid "Toggles Advanced Mode"
-msgstr "Переключатели расширенного режима"
-
-#: data/io.github.philippkosarev.bmi.gschema.xml:17
-#: src/preferences/preferences.blp:25
+#: data/io.github.philippkosarev.bmi.gschema.xml:12 src/preferences.blp:26
 msgid "Remember inputs"
 msgstr ""
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:22
+#: data/io.github.philippkosarev.bmi.gschema.xml:17
 msgid "Whether the app uses metric or imperial units"
 msgstr "В приложении доступны как метрические, так и имепрские единицы"
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:27
+#: data/io.github.philippkosarev.bmi.gschema.xml:22
 msgid "Height in centimetres or inches"
 msgstr "Рост в сантиметрах или дюймах"
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:32
+#: data/io.github.philippkosarev.bmi.gschema.xml:27
 msgid "Weight in kilograms or pounds"
 msgstr "Вес в килограмах или фунтах"
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:37
+#: data/io.github.philippkosarev.bmi.gschema.xml:32
 msgid "Years since birth"
 msgstr "Количество полных лет"
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:42 src/window/window.blp:70
+#: data/io.github.philippkosarev.bmi.gschema.xml:37 src/window.blp:67
 msgid "Biological gender"
 msgstr "Биологический пол"
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:47
+#: data/io.github.philippkosarev.bmi.gschema.xml:42
 msgid "Waist circumference in centimeters"
 msgstr "Обхват талии в сантиметрах"
 
-#: data/io.github.philippkosarev.bmi.gschema.xml:52
+#: data/io.github.philippkosarev.bmi.gschema.xml:47
 msgid "Hip circumference in centimeters"
 msgstr "Обхват бёдер в сантиметрах"
 
-#: src/main.py:86
-msgid "Translators"
-msgstr ""
-
-#: src/window/window.py:118
-msgid ""
-"With the same height, this is what weight you need to get different BMI "
-"thresholds"
-msgstr ""
-
-#: src/window/window.py:121
+#: src/window.py:44
 msgid "Underweight [Severe]"
 msgstr "Недостаточный вес [Выраженный]"
 
-#: src/window/window.py:122
+#: src/window.py:45
 msgid "Underweight [Moderate]"
 msgstr "Недостаточный вес [Умеренный]"
 
-#: src/window/window.py:123
+#: src/window.py:46
 msgid "Underweight [Mild]"
 msgstr "Недостаточный вес [Незначительный]"
 
-#: src/window/window.py:124 src/window/window.py:134 src/window/window.py:141
+#: src/window.py:47 src/window.py:196 src/window.py:204
 msgid "Healthy"
 msgstr "Здоровый"
 
-#: src/window/window.py:125 src/window/window.py:142
+#: src/window.py:48 src/window.py:197
 msgid "Overweight"
 msgstr "Избыток веса"
 
-#: src/window/window.py:126
+#: src/window.py:49
 msgid "Obese [Class 1]"
 msgstr "Ожирение [Класс 1]"
 
-#: src/window/window.py:127
+#: src/window.py:50
 msgid "Obese [Class 2]"
 msgstr "Ожирение [Класс 2]"
 
-#: src/window/window.py:128
+#: src/window.py:51
 msgid "Obese [Class 3]"
 msgstr "Ожирение [Класс 3]"
 
-#: src/window/window.py:135
-msgid "Unhealthy"
-msgstr "Нездоровый"
-
-#: src/window/window.py:143
-msgid "Obese"
-msgstr "Ожирение"
-
-#: src/window/window.py:149
+#: src/window.py:54
 msgid "Very lean"
 msgstr "Очень худой"
 
-#: src/window/window.py:150
+#: src/window.py:55
 msgid "Lean"
 msgstr "Худой"
 
-#: src/window/window.py:151 src/window/window.blp:74
+#: src/window.py:56 src/window.blp:70
 msgid "Average"
 msgstr "Среднее"
 
-#: src/window/window.py:152
+#: src/window.py:57
 msgid "Above average"
 msgstr "Выше среднего"
 
-#: src/window/window.py:153
+#: src/window.py:58
 msgid "High"
 msgstr "Высокий"
 
-#: src/window/window.py:277
+#: src/window.py:198
+msgid "Obese"
+msgstr "Ожирение"
+
+#: src/window.py:205
+msgid "Unhealthy"
+msgstr "Нездоровый"
+
+#: src/window.py:217
 msgid "Result copied"
 msgstr "Результат скопирован"
 
-#: src/window/window.blp:45
-msgid "Inputs"
-msgstr "Ввод"
+#: src/window.py:241
+msgid "Inches"
+msgstr "Дюймы"
 
-#: src/window/window.blp:47
+#: src/window.py:241
+msgid "Pounds"
+msgstr "Фунты"
+
+#: src/window.py:245
+msgid "Centimetres"
+msgstr "Сантиметры"
+
+#: src/window.py:245
+msgid "Kilograms"
+msgstr "Килограммы"
+
+#: src/window.blp:52
 msgid "Height"
 msgstr "Рост"
 
-#: src/window/window.blp:48
+#: src/window.blp:53
 msgid "Affects BMI and BRI"
 msgstr ""
 
-#: src/window/window.blp:54
+#: src/window.blp:59
 msgid "Weight"
 msgstr "Вес"
 
-#: src/window/window.blp:55
+#: src/window.blp:60
 msgid "Affects BMI"
 msgstr ""
 
-#: src/window/window.blp:67
-msgid "Advanced inputs"
-msgstr "Продвинутый ввод"
-
-#: src/window/window.blp:69
+#: src/window.blp:66
 msgid "Gender"
 msgstr "Пол"
 
-#: src/window/window.blp:71
+#: src/window.blp:68
 msgid "Affects healthy/unhealthy thresholds for Waist to Hip ratio"
 msgstr ""
 "Влияет на здоровые/нездоровые пороговые значения соотношения талии и бёдер"
 
-#: src/window/window.blp:74
+#: src/window.blp:70
 msgid "Female"
 msgstr "Женщина"
 
-#: src/window/window.blp:74
+#: src/window.blp:70
 msgid "Male"
 msgstr "Мужчина"
 
-#: src/window/window.blp:78
+#: src/window.blp:75
 msgid "Age"
 msgstr "Возраст"
 
-#: src/window/window.blp:79 src/widgets/time_row.py:12
+#: src/window.blp:76
 msgid "Years"
 msgstr ""
 
-#: src/window/window.blp:80
+#: src/window.blp:77
 msgid "Affects healthy/unhealthy thresholds for Waist to Height ratio"
 msgstr ""
 "Влияет на здоровые/нездоровые пороговые значения соотношения талии и роста"
 
-#: src/window/window.blp:87
+#: src/window.blp:84
 msgid "Waist"
 msgstr "Талия"
 
-#: src/window/window.blp:88
+#: src/window.blp:85
 msgid "Affects Waist to Height ratio, Waist to Hip ratio and BRI"
 msgstr "Влияет на соотношение талии к росту, талии к бёдрам и ИОТ"
 
-#: src/window/window.blp:94
+#: src/window.blp:91
 msgid "Hip"
 msgstr "Бёдра"
 
-#: src/window/window.blp:95
+#: src/window.blp:92
 msgid "Affects Waist to Hip ratio"
 msgstr "Влияет на соотношение талии к бёдрам"
 
-#: src/window/window.blp:107
-msgid "Results"
-msgstr "Результаты"
-
-#: src/window/window.blp:110
+#: src/window.blp:103
 msgid "Body Mass Index"
 msgstr "Индекс массы тела"
 
-#: src/window/window.blp:114
-msgid "Waist / Height"
-msgstr "Талия / Рост"
+#: src/window.blp:105
+msgid ""
+"With the same height, this is what weight you would need to achieve "
+"different BMI thresholds."
+msgstr ""
 
-#: src/window/window.blp:115
-msgid "Waist to height ratio"
-msgstr "Отношение талии к росту"
-
-#: src/window/window.blp:119
-msgid "Waist / Hip"
-msgstr "Талия / Бёдра"
-
-#: src/window/window.blp:120
-msgid "Waist to hip ratio"
-msgstr "Отношение талии к Бёдрам"
-
-#: src/window/window.blp:124
+#: src/window.blp:109
 msgid "BRI"
 msgstr "ИОТ"
 
-#: src/window/window.blp:125
+#: src/window.blp:110
 msgid "Body Roundness Index"
 msgstr "Индекс округлости тела"
 
-#: src/window/window.blp:140 src/preferences/preferences.blp:8
+#: src/window.blp:114
+msgid "WHR"
+msgstr ""
+
+#: src/window.blp:115
+msgid "Waist to hip ratio"
+msgstr "Отношение талии к Бёдрам"
+
+#: src/window.blp:119
+msgid "WHtR"
+msgstr ""
+
+#: src/window.blp:120
+msgid "Waist to height ratio"
+msgstr "Отношение талии к росту"
+
+#: src/window.blp:132 src/preferences.blp:9
 msgid "Preferences"
 msgstr ""
 
-#: src/window/window.blp:144
+#: src/window.blp:136
 msgid "About BMI"
 msgstr ""
 
-#: src/preferences/preferences.py:58
-msgid "Error setting preferences value"
+#: src/preferences.blp:16
+msgid "Units"
 msgstr ""
 
-#: src/preferences/preferences.blp:12
-#, fuzzy
-msgid "Advanced mode"
-msgstr "Переключатели расширенного режима"
-
-#: src/preferences/preferences.blp:17
+#: src/preferences.blp:17
 msgid "Measurement system"
 msgstr ""
 
-#: src/preferences/preferences.blp:21
+#: src/preferences.blp:19
 msgid "Metric"
 msgstr ""
 
-#: src/preferences/preferences.blp:21
+#: src/preferences.blp:19
 msgid "Imperial"
 msgstr ""
 
-#: src/widgets/distance_row.py:18 src/widgets/distance_row.py:44
-msgid "Centimetres"
-msgstr "Сантиметры"
+#: src/preferences.blp:27
+msgid "Restore inputs from last session"
+msgstr ""
 
-#: src/widgets/distance_row.py:41
-msgid "Inches"
-msgstr "Дюймы"
-
-#: src/widgets/mass_row.py:18 src/widgets/mass_row.py:41
-msgid "Kilograms"
-msgstr "Килограммы"
-
-#: src/widgets/mass_row.py:38
-msgid "Pounds"
-msgstr "Фунты"
-
-#: src/widgets/result_dialog.py:41
+#: src/widgets/result_row.py:175
+#, python-brace-format
 msgid "Under {}"
 msgstr ""
 
-#: src/widgets/result_dialog.py:43
-msgid "Over {}"
+#: src/widgets/result_row.py:178
+#, python-brace-format
+msgid "{} and over"
 msgstr ""
 
-#: src/widgets/result_dialog.py:45
-msgid "From {} to {}"
+#: src/widgets/result_row.py:181
+#, python-brace-format
+msgid "{} to {}"
 msgstr ""
 
-#: src/widgets/result_dialog.py:115
-msgid "lb"
-msgstr ""
-
-#: src/widgets/result_dialog.py:121
-msgid "kg"
-msgstr ""
-
-#: src/widgets/result_dialog.blp:22
+#: src/widgets/result_dialog.blp:28
 #, fuzzy
 msgid "Result"
 msgstr "Результаты"
 
-#: src/widgets/result_dialog.blp:39
+#: src/widgets/result_dialog.blp:49
 msgid "Thresholds"
 msgstr ""
 
-#: src/widgets/result_dialog.blp:43
+#: src/widgets/result_dialog.blp:55
 msgid "Additional context"
 msgstr ""
+
+#~ msgid "Body mass index calculator"
+#~ msgstr "Калькулятор индекса массы тела"
+
+#~ msgid "BMI Basic Mode Dark Theme"
+#~ msgstr "BMI Базовый режим Тёмная тема"
+
+#~ msgid "BMI Basic Mode Light Theme"
+#~ msgstr "BMI Базовый режим Светлая тема"
+
+#~ msgid "BMI Advanced Mode Dark Theme"
+#~ msgstr "BMI Расширенный режим Тёмная тема"
+
+#~ msgid "BMI Advanced Mode Light Theme"
+#~ msgstr "BMI Расширенный режим Светлая тема"
+
+#, fuzzy
+#~ msgid "Toggles Advanced Mode"
+#~ msgstr "Переключатели расширенного режима"
+
+#~ msgid "Inputs"
+#~ msgstr "Ввод"
+
+#~ msgid "Advanced inputs"
+#~ msgstr "Продвинутый ввод"
+
+#~ msgid "Results"
+#~ msgstr "Результаты"
+
+#~ msgid "Waist / Height"
+#~ msgstr "Талия / Рост"
+
+#~ msgid "Waist / Hip"
+#~ msgstr "Талия / Бёдра"
+
+#, fuzzy
+#~ msgid "Advanced mode"
+#~ msgstr "Переключатели расширенного режима"
 
 #~ msgid "Forget height and weight on quit"
 #~ msgstr "Забыть рост и вес и выйти"
