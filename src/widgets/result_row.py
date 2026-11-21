@@ -1,4 +1,5 @@
-# Imports
+import locale
+
 from gi.repository import GLib, GObject, Gio, Gtk, Adw
 
 
@@ -327,7 +328,9 @@ class ResultRow(Adw.ActionRow):
 
   def _on_result_changed(self, *args):
     self._update_feedback()
-    self.result_label = f'{self.result:.{self.digits}f}'
+    self.result_label = locale.format_string(
+      f"%.{self.digits}f", self.result,
+    )
 
   def _on_thresholds_changed(self, *args):
     self._update_feedback()
