@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <component type="desktop-application">
+
   <id>io.github.philippkosarev.bmi</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
 
   <name>BMI</name>
-  <summary>Body mass index calculator</summary>
+  <summary>Calculate body health metrics</summary>
   <description>
-    <p>BMI is an open-source, body mass index calculator built with GTK4 and LibAdwaita.</p>
+    <p>Calculator for body health metrics. Built with GTK4 and LibAdwaita.</p>
   </description>
 
   <developer id="tld.vendor">
     <name>Philipp Kosarev</name>
   </developer>
 
-  <!-- Requered: Should be a link to the upstream homepage for the component -->
   <url type="homepage">https://github.com/philippkosarev/bmi</url>
-  <!-- Recommended: It is highly recommended for open-source projects to display the source code repository -->
   <url type="vcs-browser">https://github.com/philippkosarev/bmi</url>
-  <!-- Should point to the software's bug tracking system, for users to report new bugs -->
-  <url type="bugtracker">https://github.com/PhilippKosarev/bmi/issues</url>
+  <url type="bugtracker">https://github.com/philippkosarev/bmi/issues</url>
+
   <!-- Should link a FAQ page for this software, to answer some of the most-asked questions in detail -->
-  <!-- URLs of this type should point to a webpage where users can submit or modify translations of the upstream project -->
-  <!-- <url type="translate">https://example.org/translate</url> -->
   <!-- <url type="faq">https://example.org/faq</url> -->
+
   <!--Sould provide a web link to an online user's reference, a software manual or help page -->
   <!-- <url type="help">https://example.org/help</url> -->
+
+  <!-- URLs of this type should point to a webpage where users can submit or modify translations of the upstream project -->
+  <!-- <url type="translate">https://example.org/translate</url> -->
+
+  <!--This could for example be an HTTPS URL to an online form or a page describing how to contact the developer -->
+  <!-- <url type="contact">https://github.com/philippkosarev</url> -->
+
   <!-- URLs of this type should point to a webpage showing information on how to donate to the described software project -->
   <!-- <url type="donation">https://example.org/donate</url> -->
-  <!--This could for example be an HTTPS URL to an online form or a page describing how to contact the developer -->
-  <url type="contact">https://github.com/PhilippKosarev</url>
+
   <!--URLs of this type should point to a webpage showing information on how to contribute to the described software project -->
-  <url type="contribute">https://github.com/PhilippKosarev/bmi</url>
+  <!-- <url type="contribute">https://github.com/philippkosarev/bmi</url> -->
 
   <translation type="gettext">bmi</translation>
+
   <!-- All graphical applications having a desktop file must have this tag in the MetaInfo.
-     If this is present, appstreamcli compose will pull icons, keywords and categories from the desktop file. -->
+       If this is present, appstreamcli compose will pull icons, keywords and categories from the desktop file. -->
   <launchable type="desktop-id">io.github.philippkosarev.bmi.desktop</launchable>
+
   <!-- Use the OARS website (https://hughsie.github.io/oars/generate.html) to generate these and make sure to use oars-1.1 -->
   <content_rating type="oars-1.1" />
 
@@ -47,21 +54,21 @@
   </branding>
 
   <screenshots>
-    <screenshot type="default">
-      <image>https://raw.githubusercontent.com/PhilippKosarev/bmi/8a7b6b8c0390adf42d5919c3c324d57ef386aa38/screenshots/simple-dark.png</image>
-      <caption>BMI Basic Mode Dark Theme</caption>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/philippkosarev/bmi/95d2c9a70f46b321179c43530923256acae91cad/screenshots/landscape-dark.png</image>
+      <caption>Landscape dark theme</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/PhilippKosarev/bmi/8a7b6b8c0390adf42d5919c3c324d57ef386aa38/screenshots/simple-light.png</image>
-      <caption>BMI Basic Mode Light Theme</caption>
-    </screenshot>
-    <screenshot type="default">
-      <image>https://raw.githubusercontent.com/PhilippKosarev/bmi/8a7b6b8c0390adf42d5919c3c324d57ef386aa38/screenshots/advanced-dark.png</image>
-      <caption>BMI Advanced Mode Dark Theme</caption>
+      <image>https://raw.githubusercontent.com/philippkosarev/bmi/95d2c9a70f46b321179c43530923256acae91cad/screenshots/landscape-light.png</image>
+      <caption>Landscape light theme</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/PhilippKosarev/bmi/8a7b6b8c0390adf42d5919c3c324d57ef386aa38/screenshots/advanced-light.png</image>
-      <caption>BMI Advanced Mode Light Theme</caption>
+      <image>https://raw.githubusercontent.com/philippkosarev/bmi/95d2c9a70f46b321179c43530923256acae91cad/screenshots/portrait-dark.png</image>
+      <caption>Portrait dark theme</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/philippkosarev/bmi/95d2c9a70f46b321179c43530923256acae91cad/screenshots/portrait-light.png</image>
+      <caption>Portrait light theme</caption>
     </screenshot>
   </screenshots>
 
@@ -77,17 +84,21 @@
   </supports>
 
   <releases>
-    <release version="v4.1" date="2025-12-02">
-      <url type="details">https://github.com/PhilippKosarev/bmi/releases/tag/v4.1</url>
+    <release version="v5.0" date="2026-11-21">
+      <url type="details">https://github.com/philippkosarev/bmi/releases/tag/v5.0</url>
       <description translate="no">
-        <p>Version 4.1</p>
+        <p>Version 5.0</p>
         <ul>
-          <li>Added result dialogues with thresholds and context information</li>
-          <li>Updated GNOME runtime to version 49</li>
-          <li>Added Italian translation</li>
-          <li>Added Brazilian Portuguese translation</li>
-          <li>Added Spanish translation</li>
-          <li>Updated Ukrainian translation</li>
+          <li>Removed advanced mode</li>
+          <li>Added ability to input fractional values</li>
+          <li>Show more decimal places for results</li>
+          <li>Minor user interface layout and styling changes</li>
+          <li>Improved performance</li>
+          <li>Updated GNOME Flatpak Runtime to version 51</li>
+          <li>Added French translations (by pcharlanes)</li>
+          <li>Added Vietnamese translations (by Huỳnh Thiện Lộc)</li>
+          <li>Added German translations (by Vincon)</li>
+          <li>Updated Ukranian translations (by Maksym Dilanian)</li>
         </ul>
       </description>
     </release>
