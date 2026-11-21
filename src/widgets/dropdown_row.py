@@ -1,8 +1,5 @@
 # Imports
-from gi.repository import GLib, Gtk, Adw, GObject
-
-# Internal imports
-from .base_row import BaseRow
+from gi.repository import GLib, GObject, Adw
 
 
 class DropDownRow(Adw.ComboRow):
@@ -13,7 +10,7 @@ class DropDownRow(Adw.ComboRow):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    GLib.idle_add(self._post_init)
+    GLib.idle_add(lambda: DropDownRow._post_init(self))
 
   def _post_init(self):
     flags = (

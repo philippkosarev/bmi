@@ -2,8 +2,7 @@
 from gi.repository import Gtk, Adw, Gio, GObject
 
 # Internal imports
-from . import widgets
-from .widgets.shared import get_children, get_nth_child
+from .widgets.shared import get_nth_child, get_children
 
 
 @Gtk.Template(resource_path='/io/github/philippkosarev/bmi/preferences.ui')

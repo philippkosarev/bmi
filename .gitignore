@@ -1,4 +1,3 @@
-/subprojects/blueprint-compiler
-/.flatpak-builder
+__pycache__
 /build
-/.buildconfig
+/.flatpak-builder

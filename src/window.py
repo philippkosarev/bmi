@@ -1,4 +1,4 @@
-from gi.repository import GObject, Gtk, Adw, Gio, Gdk
+from gi.repository import GObject, Gtk, Adw, Gio
 
 from . import calc
 from .widgets import Threshold, Thresholds, ResultRow

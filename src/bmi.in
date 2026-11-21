@@ -1,46 +1,26 @@
 #!@PYTHON@
 
-# bmi.in
-#
-# Copyright 2024 philipp
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# SPDX-License-Identifier: GPL-2.0-or-later
-
 import os
 import sys
 import signal
 import locale
 import gettext
 
-pkgdatadir = '@pkgdatadir@'
-localedir = '@localedir@'
+LOCALE_DIR = '@localedir@'
+PKG_DATA_DIR = '@pkgdatadir@'
+RESOURCE_FILE = os.path.join(PKG_DATA_DIR, 'bmi.gresource')
 
-sys.path.insert(1, pkgdatadir)
+sys.path.insert(1, PKG_DATA_DIR)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
-locale.bindtextdomain('bmi', localedir)
+
+locale.bindtextdomain('bmi', LOCALE_DIR)
 locale.textdomain('bmi')
-gettext.install('bmi', localedir)
+gettext.install('bmi', LOCALE_DIR)
 
 if __name__ == '__main__':
-  import gi
-
   from gi.repository import Gio
-  resource = Gio.Resource.load(os.path.join(pkgdatadir, 'bmi.gresource'))
+  resource = Gio.Resource.load(RESOURCE_FILE)
   resource._register()
 
-  from bmi import main
-  sys.exit(main.main())
+  from bmi.main import main
+  sys.exit(main())

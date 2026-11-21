@@ -1,7 +1,5 @@
-# Gtk imports
 from gi.repository import GObject, Gtk
 
-# Internal imports
 from .base_row import BaseRow
 
 
@@ -14,6 +12,7 @@ class SpinRow(BaseRow):
   value = GObject.Property(type=float, default=10.0)
 
   def __init__(self, **kwargs):
+    super().__init__(**kwargs)
     # Creating the spin button
     self.spin_button = Gtk.SpinButton(
       xalign=1,
@@ -31,7 +30,6 @@ class SpinRow(BaseRow):
     self.wire_property('upper', adjustment)
     self.wire_property('value', adjustment)
     # Setting up self
-    super().__init__(**kwargs)
     self.add_suffix(self.spin_button)
     self.set_size_request(260, 60)
     self.set_activatable(True)

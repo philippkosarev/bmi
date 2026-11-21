@@ -1,11 +1,7 @@
-# Imports
-from gi.repository import Gtk, Adw, Gio, GObject
+from gi.repository import GObject, Gtk
 
-# Internal imports
 from .base_row import BaseRow
 
-# Shorthands vars
-center = Gtk.Align.CENTER
 
 class SwitchRow(BaseRow):
   __gtype_name__ = 'SwitchRow'
@@ -14,7 +10,7 @@ class SwitchRow(BaseRow):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    self.switch = Gtk.Switch(valign=center, can_focus=False)
+    self.switch = Gtk.Switch(valign=Gtk.Align.CENTER, can_focus=False)
     self.add_suffix(self.switch)
     self.set_activatable_widget(self.switch)
     self.wire_property('value', self.switch, 'active')

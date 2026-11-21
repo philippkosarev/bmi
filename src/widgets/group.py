@@ -1,11 +1,13 @@
 # Imports
-from gi.repository import Gtk, Adw
+from gi.repository import Adw
 
 # Internal imports
-from .shared import *
+from .shared import get_children
 
-# An AdwPreferencesGroup, but with a way to get its children.
+
 class Group(Adw.PreferencesGroup):
+  """An AdwPreferencesGroup, but with a way to get its children."""
+
   __gtype_name__ = 'Group'
 
   def __init__(self, **kwargs):
