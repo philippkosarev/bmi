@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=BMI
-Comment=Calculate body mass index
+Comment=Calculate body health metrics
 Exec=bmi
 Icon=io.github.philippkosarev.bmi
 Terminal=false
 Type=Application
-Categories=Utility;
-Keywords=GTK;body;mass;index;calculator
+Categories=Utility
+Keywords=body;mass;index;calculator;bmi;bri;whr;whtr;health
 StartupNotify=true
 DBusActivatable=true
