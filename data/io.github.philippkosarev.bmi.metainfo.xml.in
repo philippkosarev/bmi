@@ -54,7 +54,7 @@
   </branding>
 
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <image>https://raw.githubusercontent.com/philippkosarev/bmi/95d2c9a70f46b321179c43530923256acae91cad/screenshots/landscape-dark.png</image>
       <caption>Landscape dark theme</caption>
     </screenshot>
