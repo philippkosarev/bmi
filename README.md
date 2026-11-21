@@ -1,7 +1,7 @@
 # BMI
 Calculator for body health metrics. Built with GTK4 and LibAdwaita.
 
-<img width='640' src='screenshots/advanced-dark.png'/>
+<img width='640' src='screenshots/landscape-dark.png'/>
 
 ## Installation
 Available as a [Flatpak](https://flatpak.org)
